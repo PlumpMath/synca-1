@@ -8,12 +8,14 @@ namespace coro {
 TLS Coro* t_coro;
 const size_t STACK_SIZE = 8096;
 
+// возвращаем управление из сопрограммы
 void yield()
 {
     VERIFY(isInsideCoro(), "yield() outside coro");
     t_coro->yield0();
 }
 
+// проверка того, находимся ли мы внутри сопрограммы
 bool isInsideCoro()
 {
     return t_coro != nullptr;
@@ -42,6 +44,7 @@ void Coro::start(Handler handler)
     jump0(reinterpret_cast<intptr_t>(&handler));
 }
 
+// возобновление сопрограммы после yield
 void Coro::resume()
 {
     VERIFY(started, "Cannot resume: not started");
@@ -49,6 +52,7 @@ void Coro::resume()
     jump0();
 }
 
+// проверка того, что сопрограмма еще не завершена
 bool Coro::isStarted() const
 {
     return started || running;
@@ -59,9 +63,10 @@ void Coro::init0()
     started = false;
     running = false;
     context = nullptr;
-    stack.resize(100000);
+    stack.resize(STACK_SIZE);
 }
 
+// возврат в сохраненный контекст
 void Coro::yield0()
 {
     boost::context::jump_fcontext(context, &savedContext, 0);
