@@ -15,10 +15,12 @@ file
 	async readonly separator,
 	async.h,
 	async.cpp,
-	future readonly separator,
+	synca readonly separator,
 	synca.h,
 	synca.cpp,
-	end readonly separator;
+	license readonly separator,
+	LICENSE,
+	LICENSE.ru;
 
 mainconfig
 	"" = "MT";
