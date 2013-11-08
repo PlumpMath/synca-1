@@ -1,0 +1,25 @@
+options
+	-DBOOST_ASIO_HAS_MOVE;
+
+options(WIN32) -D_WIN32_WINNT=0x0501;
+
+file
+	main.cpp,
+	defs.h,
+	coro readonly separator,
+	coro.h,
+	coro.cpp,
+	sync readonly separator,
+	sync.h,
+	sync.cpp,
+	async readonly separator,
+	async.h,
+	async.cpp,
+	future readonly separator,
+	synca.h,
+	synca.cpp,
+	end readonly separator;
+
+mainconfig
+	"" = "MT";
+
