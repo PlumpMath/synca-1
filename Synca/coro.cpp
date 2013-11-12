@@ -81,9 +81,7 @@ void Coro::jump0(intptr_t p)
     running = false;
     std::swap(old, t_coro);
     if (exc != std::exception_ptr())
-    {
         std::rethrow_exception(exc);
-    }
 }
 
 void Coro::starterWrapper0(intptr_t p)

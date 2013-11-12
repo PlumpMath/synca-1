@@ -100,8 +100,8 @@ void Socket::readSome(Buffer& buffer)
     VERIFY(coro::isInsideCoro(), "readSome must be called inside coro");
     defer([this, &buffer](coro::Coro* coro) {
         VERIFY(!coro::isInsideCoro(), "readSome completion must be called outside coro");
-        LOG("readSome scheduled");
         socket.readSome(buffer, onCompleteHandler(coro));
+        LOG("readSome scheduled");
     });
 }
 
@@ -110,8 +110,8 @@ void Socket::readUntil(Buffer& buffer, Buffer until)
     VERIFY(coro::isInsideCoro(), "readUntil must be called inside coro");
     defer([this, &buffer, until](coro::Coro* coro) {
         VERIFY(!coro::isInsideCoro(), "readUntil completion must be called outside coro");
-        LOG("readUntil scheduled");
         socket.readUntil(buffer, std::move(until), onCompleteHandler(coro));
+        LOG("readUntil scheduled");
     });
 }
 

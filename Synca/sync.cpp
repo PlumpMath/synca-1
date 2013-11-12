@@ -63,7 +63,10 @@ int Socket::readUntil(Buffer& buffer, const Buffer& until)
         size_t bytes = socket.read_some(boost::asio::buffer(&buffer[offset], buffer.size() - offset));
         offset += bytes;
         if (hasEnd(offset, buffer, until))
+        {
+            buffer.resize(offset);
             return offset;
+        }
         if (offset == buffer.size())
         {
             LOG("not enough size: " << buffer.size());
