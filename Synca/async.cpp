@@ -5,7 +5,7 @@
 #include "async.h"
 #include "sync.h"
 
-namespace async {
+namespace io { namespace async {
 
 boost::asio::io_service& service()
 {
@@ -208,4 +208,4 @@ void Acceptor::accept(Socket& socket, IoHandler handler)
     acceptor.async_accept(socket.socket, handler);
 }
 
-}
+}}

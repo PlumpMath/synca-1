@@ -4,7 +4,7 @@
 #include "synca.h"
 #include "coro.h"
 
-namespace synca {
+namespace io { namespace synca {
 
 typedef async::Error Error;
 typedef std::function<void(coro::Coro*)> CoroHandler;
@@ -155,4 +155,4 @@ void Acceptor::goAccept(Handler handler)
     });
 }
 
-}
+}}

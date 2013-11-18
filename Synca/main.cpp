@@ -76,6 +76,8 @@ Buffer httpContent(const Buffer& body)
     return o.str();
 }
 
+namespace io {
+
 namespace sync {
 
 void test1()
@@ -288,10 +290,11 @@ void test3()
     threads(0);
 }
 
-}
+}}
 
 int main(int argc, char* argv[])
 {
+    using namespace io;
     try
     {
         VERIFY(argc == 2, "Usage: <test name>");

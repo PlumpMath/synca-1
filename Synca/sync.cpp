@@ -4,7 +4,7 @@
 #include <thread>
 #include "sync.h"
 
-namespace sync {
+namespace io { namespace sync {
 
 void go(Handler handler)
 {
@@ -95,4 +95,4 @@ void Acceptor::accept(Socket& socket)
     acceptor.accept(socket.socket);
 }
 
-}
+}}

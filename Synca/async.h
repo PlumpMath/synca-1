@@ -5,7 +5,7 @@
 #include <boost/asio.hpp>
 #include "defs.h"
 
-namespace async {
+namespace io { namespace async {
 
 void go(Handler);
 void dispatch(int threadCount = 0);
@@ -41,4 +41,4 @@ private:
     boost::asio::ip::tcp::acceptor acceptor;
 };
 
-}
+}}

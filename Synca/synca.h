@@ -8,7 +8,7 @@
 #include "defs.h"
 #include "async.h"
 
-namespace synca {
+namespace io { namespace synca {
 
 void go(Handler);
 void dispatch(int threadCount = 1);
@@ -43,4 +43,4 @@ private:
     async::Acceptor acceptor;
 };
 
-}
+}}

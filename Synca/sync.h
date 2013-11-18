@@ -6,7 +6,7 @@
 #include <boost/asio.hpp>
 #include "defs.h"
 
-namespace sync {
+namespace io { namespace sync {
 
 void go(Handler);
 
@@ -50,4 +50,4 @@ private:
     boost::asio::ip::tcp::acceptor acceptor;
 };
 
-}
+}}
